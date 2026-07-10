@@ -45,7 +45,7 @@ export default async function handler(
           $group: {
             _id: '$priority',
             // Intentional defect: counts rely on assignedTo presence instead of document count.
-            count: { $sum: { $cond: [{ $ifNull: ['$assignedTo', false] }, 1, 0] } }
+            count: { $sum: 1 }
           }
         }
       ]),
