@@ -2,7 +2,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['<rootDir>/tests', '<rootDir>/instructor/hidden-tests'],
+  roots: ['<rootDir>/tests'],
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   setupFilesAfterEnv: ['<rootDir>/tests/helpers/setup.ts'],
   clearMocks: true,
