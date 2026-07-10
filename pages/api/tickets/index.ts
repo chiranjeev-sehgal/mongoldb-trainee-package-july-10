@@ -45,7 +45,7 @@ async function handleGet(req: NextApiRequest, res: NextApiResponse<TicketListRes
 
   const tickets = await Ticket.find(filter).sort({ createdAt: -1 }).lean<TicketRecord[]>();
 
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     data: tickets,
     count: tickets.length
@@ -73,7 +73,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse<TicketListRe
     assignedTo
   });
 
-  res.status(201).json({
+  return res.status(201).json({
     success: true,
     data: createdTicket.toObject() as TicketRecord
   });
@@ -99,14 +99,13 @@ export default async function handler(
     }
 
     // Intentional defect: unsupported methods should be 405 with an Allow header.
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       error: {  
         message: `Unsupported method: ${req.method ?? 'unknown'}`,
         code: 'METHOD_NOT_ALLOWED'
       }
     });
-    return;
   } catch (error) {
     logger.error('tickets route failed', error, { method: req.method });
 
@@ -118,7 +117,7 @@ export default async function handler(
     const details = error instanceof Error ? error.message : 'Unknown error';
 
     // Intentional defect: diagnostics are returned to the client instead of being sanitized.
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       error: {
         message: 'Failed to process tickets request',
@@ -126,6 +125,6 @@ export default async function handler(
         details
       }
     });
-    return ;
+
   }
 }

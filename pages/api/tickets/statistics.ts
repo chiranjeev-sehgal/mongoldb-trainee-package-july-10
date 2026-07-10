@@ -69,7 +69,7 @@ export default async function handler(
       return accumulator;
     }, {});
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: {
         total,
@@ -78,7 +78,7 @@ export default async function handler(
         overdueActive
       }
     });
-    return ;
+   
   } catch (error) {
     logger.error('ticket statistics route failed', error, { method: req.method });
     createErrorResponse(res, 500, 'Internal server error', 'INTERNAL_ERROR');

@@ -43,12 +43,11 @@ export default async function handler(
       .sort({ priority: 1, dueDate: 1 })
       .lean<TicketRecord[]>();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       data: tickets,
       count: tickets.length
     });
-    return ;
   } catch (error) {
     logger.error('overdue tickets route failed', error, { method: req.method });
 
