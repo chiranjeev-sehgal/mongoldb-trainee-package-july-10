@@ -44,8 +44,9 @@ export default async function handler(
         {
           $group: {
             _id: '$priority',
+            count: { $sum: 1 }
             // Intentional defect: counts rely on assignedTo presence instead of document count.
-            count: { $sum: { $cond: [{ $ifNull: ['$assignedTo', false] }, 1, 0] } }
+            
           }
         }
       ]),
@@ -61,10 +62,16 @@ export default async function handler(
     }, {});
 
     // Intentional defect: absent categories are not normalized to zero.
-    const byPriority = byPriorityRaw.reduce<Partial<Record<TicketPriority, number>>>((accumulator, entry) => {
-      accumulator[entry._id] = entry.count;
-      return accumulator;
-    }, {});
+    const byPriority: Partial<Record<TicketPriority, number>> = {
+        low: 0,
+        medium: 0,
+        high: 0,
+        critical: 0
+        };
+
+byPriorityRaw.forEach((entry) => {
+  byPriority[entry._id] = entry.count;
+});
 
     res.status(200).json({
       success: true,
