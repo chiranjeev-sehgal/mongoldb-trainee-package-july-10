@@ -6,7 +6,7 @@ Batch: chiranjeev sir
 Database Track: MongoDB
 Repository: https://github.com/chiranjeev-sehgal/postgres-trainee-package-july-10
 Branch:CR5-T6M-X9B
-Final Commit SHA:
+Final Commit SHA: commit 5f5d5545c3adaf79a69961382437899e470d2101
 
 ## Bugs Identified
 1. in index.ts file the method not found is comming when i run the dev server. and the status code not returned
@@ -21,11 +21,7 @@ index.ts, overdue.ts, statistics.ts, validation.ts
 
 ## Tests Added or Updated
 
-
-
 ## Commands Run
-npm run dev
-
 
 ## Integrity Declaration
 I confirm that I did not use any AI tools for this challenge. I only used my own work, my own notes, and official documentation for tools used in this project.
