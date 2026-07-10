@@ -31,7 +31,10 @@ export default async function handler(
     const priorityParam = getSingleQueryParam(req.query.priority, 'priority');
     const now = getControlledNow();
     const filter: Record<string, unknown> = {
-      dueDate: { $gt: now }
+      dueDate: { $lt: now },
+  status: {
+    $nin: ['resolved', 'closed']
+  }
     };
 
     if (priorityParam) {

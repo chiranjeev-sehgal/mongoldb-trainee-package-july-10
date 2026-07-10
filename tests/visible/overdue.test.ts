@@ -32,4 +32,17 @@ describe('/api/tickets/overdue', () => {
     expect(res.statusCode).toBe(200);
     expect((body as { count: number }).count).toBe(1);
   });
+  it('returns 400 for an invalid priority filter', async () => {
+  const { res, body } = await invokeRoute(handler, {
+    method: 'GET',
+    query: {
+      priority: 'urgent'
+    }
+  });
+
+  expect(res.statusCode).toBe(400);
+  expect(body).toMatchObject({
+    success: false
+  });
+});
 });
