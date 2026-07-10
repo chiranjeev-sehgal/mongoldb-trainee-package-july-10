@@ -45,7 +45,10 @@ export default async function handler(
           $group: {
             _id: '$priority',
             // Intentional defect: counts rely on assignedTo presence instead of document count.
-            count: { $sum: { $cond: [{ $ifNull: ['$assignedTo', false] }, 1, 0] } }
+            count: { $sum: 
+              { $cond: [{ 
+                $ifNull: ['$assignedTo', 'false'] 
+              }, 1, 0] } }
           }
         }
       ]),
@@ -75,6 +78,7 @@ export default async function handler(
         overdueActive
       }
     });
+    return ;
   } catch (error) {
     logger.error('ticket statistics route failed', error, { method: req.method });
     createErrorResponse(res, 500, 'Internal server error', 'INTERNAL_ERROR');

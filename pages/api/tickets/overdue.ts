@@ -48,14 +48,16 @@ export default async function handler(
       data: tickets,
       count: tickets.length
     });
+    return ;
   } catch (error) {
     logger.error('overdue tickets route failed', error, { method: req.method });
 
     if (error instanceof ApiValidationError) {
       createErrorResponse(res, error.statusCode, error.message, error.code);
-      return;
+      return ;
     }
 
     createErrorResponse(res, 500, 'Internal server error', 'INTERNAL_ERROR');
+    return ;
   }
 }
