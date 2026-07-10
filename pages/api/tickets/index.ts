@@ -101,17 +101,18 @@ export default async function handler(
     // Intentional defect: unsupported methods should be 405 with an Allow header.
     res.status(400).json({
       success: false,
-      error: {
+      error: {  
         message: `Unsupported method: ${req.method ?? 'unknown'}`,
         code: 'METHOD_NOT_ALLOWED'
       }
     });
+    return;
   } catch (error) {
     logger.error('tickets route failed', error, { method: req.method });
 
     if (error instanceof ApiValidationError) {
       createErrorResponse(res, error.statusCode, error.message, error.code);
-      return;
+      return ;  
     }
 
     const details = error instanceof Error ? error.message : 'Unknown error';
@@ -125,5 +126,6 @@ export default async function handler(
         details
       }
     });
+    return ;
   }
 }
