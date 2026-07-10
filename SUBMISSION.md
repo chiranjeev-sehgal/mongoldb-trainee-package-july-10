@@ -18,11 +18,11 @@ Final Commit SHA:
 
 ## Commands Run
 
-## AI Tools Used
+## Integrity Declaration
+I confirm that I did not use any AI tools for this challenge. I only used my own work, my own notes, and official documentation for tools used in this project.
 
-## Prompts Used
-
-## AI Output Rejected or Corrected
+Signature / Initials:
+Date:
 
 ## Known Remaining Issues
 

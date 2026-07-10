@@ -10,13 +10,22 @@ Fix the business defects in this repository without replacing the intended archi
 
 ## Permitted Resources
 
-- Official documentation
+- Official documentation for tools and libraries used in this project (for example: Next.js, MongoDB, Mongoose, TypeScript, Jest, Node.js)
 - Your own notes
-- Approved AI tools if you disclose usage in your submission
 
 ## AI Policy
 
-AI assistance is allowed only if you document what you used, the prompts you gave, and what output you rejected or corrected. Undeclared assistance may trigger an integrity review.
+**AI usage is strictly prohibited.**
+
+You may not use AI tools of any kind for this challenge, including but not limited to:
+
+- ChatGPT, Claude, Gemini, Copilot, Cursor Agent, or similar assistants
+- AI-powered code completion, generation, refactoring, or explanation features
+- AI chat, search, or debugging assistants
+
+You **may** consult official documentation for the tools used in this project. Using AI to summarize, rewrite, or answer questions about that documentation is not allowed.
+
+Any AI usage — declared or undeclared — is a rules violation and may result in disqualification or an integrity review.
 
 ## Rules
 
